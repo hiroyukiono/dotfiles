@@ -1,0 +1,16 @@
+# main viewの左端にコミットIDを表示する
+set main-view = id date author commit-title:graph=yes,refs=yes
+
+# デフォルトのbind generic G !git gcを無効化する
+bind generic g none
+
+# ページ移動をVimのキーバインドにする
+bind generic g move-first-line
+bind generic <Ctrl-f> move-page-down
+bind generic <Ctrl-b> move-page-up
+
+# コミットの並び順
+set commit-order = date
+
+# コミットグラフのタイプを指定
+set line-graphics = utf-8

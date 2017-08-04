@@ -1,0 +1,8 @@
+[user]
+        name = Hiroyuki Ono
+[color]
+        ui = auto
+[core]
+        editor = vim
+[push]
+        default = simple
