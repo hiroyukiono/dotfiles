@@ -1,8 +1,8 @@
 [user]
-        name = Hiroyuki Ono
+  name = Hiroyuki Ono
 [color]
-        ui = auto
+  ui = auto
 [core]
-        editor = vim
+  editor = vim
 [push]
-        default = simple
+  default = simple
