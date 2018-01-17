@@ -116,6 +116,13 @@ zle clear-screen
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+#---------------
+# colordiff
+#---------------
+if [ -x "$(which colordiff)" ]; then
+            alias diff="colordiff -u"
+fi
+
 #----------------------------------------------------
 # コマンド実行時に候補を表示するzsh-autosuggestions
 #----------------------------------------------------
