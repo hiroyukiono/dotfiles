@@ -1,16 +1,18 @@
+# 公式で用意されているVim風のプリセットを読み込む
+source ~/.tigrc.vim
+
 # main viewの左端にコミットIDを表示する
 set main-view = id date author commit-title:graph=yes,refs=yes
-
-# デフォルトのbind generic G !git gcを無効化する
-bind generic g none
-
-# ページ移動をVimのキーバインドにする
-bind generic g move-first-line
-bind generic <Ctrl-f> move-page-down
-bind generic <Ctrl-b> move-page-up
 
 # コミットの並び順
 set commit-order = date
 
 # コミットグラフのタイプを指定
 set line-graphics = utf-8
+
+# git-foresta
+bind main ga !sh -c "git-foresta --all --graph-symbol-merge=★  --graph-symbol-overpass== | less -RSX"
+bind main gf !sh -c "git-foresta --graph-symbol-merge=★  --graph-symbol-overpass== | less -RSX"
+
+# リフレッシュするタイミング
+set refresh-mode = auto
