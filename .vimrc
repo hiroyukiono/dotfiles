@@ -13,16 +13,8 @@ if has('vim_starting')
         "--------------------------------------
         NeoBundle 'Shougo/neobundle.vim'
         NeoBundle 'vim-ruby/vim-ruby'
-        NeoBundle 'kchmck/vim-coffee-script'
-        NeoBundle 'Shougo/neocomplete.vim'
-        NeoBundle 'Shougo/unite.vim'
-        NeoBundle 'fatih/vim-go'
-        NeoBundle 'othree/html5.vim'
-        NeoBundle 'hail2u/vim-css3-syntax'
         NeoBundle 'ngmy/vim-rubocop'
         NeoBundle 'scrooloose/syntastic'
-        NeoBundle 'osyo-manga/vim-over'
-        NeoBundle 'osyo-manga/vim-anzu'
         "--------------------------------------
 
         call neobundle#end()
@@ -63,16 +55,8 @@ set laststatus=2
 set t_Co=256
 "Tabを空白文字へ置き換える
 set expandtab
-"無名レジスタとクリップボードを連携させる
-set clipboard+=unnamed
-set clipboard+=autoselect
-"set clipboard=unnamed,autoselect
-"set clipboard=unnamedplus
 " ビープ音を消す
 set vb t_vb=
-" ヤンクした内容をクリップボードへ追加する
-" command Pbcopy :let @*=@"
-" command Pbcopy0 :let @*=@0
 " ビジュアルモード<Control + c>でクリップボードへコピー
 vmap <C-c> :w !xsel -ib<CR><CR>
 
@@ -110,114 +94,8 @@ set hlsearch
 set incsearch
 
 "-------------------
-"GO Lang
-"-------------------
-" let g:go_highlight_functions = 1
-" let g:go_highlight_methods = 1
-" let g:go_highlight_structs = 1
-"Errをhighlight
-" autocmd FileType go :highlight goErr cterm=bold ctermfg=214
-" autocmd FileType go :match goErr /\<err\>/
-
-"-------------------
-"Unit.vimの設定
-"-------------------
-"入力モードで開始する
-let g:unite_enable_start_insert=1
-"バッファ一覧
-noremap <C-p> :Unite buffer<CR>
-"ファイル一覧
-noremap <C-n> :Unite -buffer-name=file file<CR>
-"最近使ったファイルの一覧
-noremap <C-z> :Unite file_mru<CR>
-"sourcesを今開いているディレクトリとする
-noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
-"ウィンドウを分割してい開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-"ウィンドウを縦分割してい開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
-"ESCを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-
-
-"-------------------
-"erb indent
-"-------------------
-autocmd BufRead, BufNewFile *.erb set filetype=eruby.html
-
-"-------------------
 "rubocop
 "-------------------
 let g:syntastic_mode_map = { 'mode': 'active',
                         \ 'active_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers = ['rubocop']
-
-"-------------------
-"vim-anzu
-"-------------------
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-
-"-------------------
-"neocomplete
-"-------------------
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-                        \ 'default' : '',
-                        \ 'vimshell' : $HOME.'/.vimshell_hist',
-                        \ 'scheme' : $HOME.'/.gosh_completions'
-                        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g> neocomplete#undo_completion()
-inoremap <expr><C-l> neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-        return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-        For no inserting <CR> key.
-        "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
