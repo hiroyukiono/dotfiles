@@ -58,10 +58,6 @@ setopt extended_history
 autoload -U compinit
 compinit
 autoload -U colors; colors
-#cd後自動でls
-function chpwd() {ls --color=auto}
-#PATH
-export PATH=$PATH:/home/hono/bin
 
 #--------------------
 #プロンプトの設定
@@ -129,6 +125,22 @@ fi
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 #---------------
+# OS固有の設定
+#---------------
+case ${OSTYPE} in
+  darwin*)
+    export PATH=$PATH:/Users/hono/bin
+    function chpwd() { ls -G -w }
+    alias ls="ls -G -w"
+  ;;
+  linux*)
+    export PATH=$PATH:/home/hono/bin
+    function chpwd() { ls --color=auto }
+    alias ls="ls --color=auto"
+  ;;
+esac
+
+#---------------
 #aliasの設定
 #---------------
 alias rm="rm -rf"
@@ -150,7 +162,6 @@ alias gs="git status"
 alias gr="git remote -v"
 alias tm="tmux"
 alias gch="git checkout"
-alias ls="ls --color=auto"
 alias la="ls -a"
 alias ll="ls -l"
 alias tig="tig --all"
