@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DOT_FILES=".zshrc .zshenv .vimrc .tmux.conf .tigrc"
+DOT_FILES=".zshrc .zshenv .vimrc .tmux.conf .tigrc .tigrc.vim"
 
 NEOBUNDLE_GIT_URL="git://github.com/Shougo/neobundle.vim"
 NEOBUNDLE_DIST_DIR="$HOME/.vim/bundle/neobundle.vim"
