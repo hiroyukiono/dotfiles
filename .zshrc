@@ -62,7 +62,6 @@ autoload -U colors; colors
 #--------------------
 #プロンプトの設定
 #--------------------
-PROMPT="%F{cyan}%n%f%F{yellow}%f%F%f$ "
 RPROMPT="%F{green}[%d]%f"
 #コマンド実行直後に右プロンプトを消す
 setopt transient_rprompt
@@ -129,11 +128,13 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 #---------------
 case ${OSTYPE} in
   darwin*)
+    PROMPT="%F{yellow}%n%f%F{yellow}%f%F%f$ "
     export PATH=$PATH:/Users/hono/bin
     function chpwd() { ls -G -w }
     alias ls="ls -G -w"
   ;;
   linux*)
+    PROMPT="%F{cyan}%n%f%F{yellow}%f%F%f$ "
     export PATH=$PATH:/home/hono/bin
     function chpwd() { ls --color=auto }
     alias ls="ls --color=auto"
