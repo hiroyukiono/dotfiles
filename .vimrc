@@ -105,6 +105,6 @@ let g:syntastic_ruby_checkers = ['rubocop']
 "--------------------------------------
 augroup noah_sort_checker
   autocmd!
-  autocmd BufEnter */api_runtime_errors.yml :!noah_sort_checker '%:p'
-  autocmd BufWritePost */api_runtime_errors.yml :!noah_sort_checker '%:p'
+  autocmd BufEnter */build/system/api/sysapi/app/resources/api_runtime_errors.yml :!noah_sort_checker '%:p'
+  autocmd BufWritePost */build/system/api/sysapi/app/resources/api_runtime_errors.yml :!noah_sort_checker '%:p'
 augroup END
