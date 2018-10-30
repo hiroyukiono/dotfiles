@@ -99,3 +99,12 @@ set incsearch
 let g:syntastic_mode_map = { 'mode': 'active',
                         \ 'active_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers = ['rubocop']
+
+"--------------------------------------
+" APIランタイムエラーのソートチェック
+"--------------------------------------
+augroup noah_sort_checker
+  autocmd!
+  autocmd BufEnter */api_runtime_errors.yml :!noah_sort_checker '%:p'
+  autocmd BufWritePost */api_runtime_errors.yml :!noah_sort_checker '%:p'
+augroup END
