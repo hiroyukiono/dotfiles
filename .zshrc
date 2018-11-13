@@ -19,8 +19,6 @@ export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30
 export ZLS_COLORS=$LS_COLORS
 #ls自動で色をつける
 export CLICOLOR=true
-#grepコマンドに色をつける
-export GREP_OPTIONS='--color=auto'
 #補完候補に色をつける
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 #出力の末尾に改行コードが無い
@@ -161,6 +159,7 @@ alias gba="git branch -a"
 alias gb="git branch"
 alias gs="git status"
 alias gr="git remote -v"
+alias grep="grep --color=auto"
 alias tm="tmux"
 alias gch="git checkout"
 alias la="ls -a"
