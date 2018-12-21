@@ -16,3 +16,6 @@ bind main gf !sh -c "git-foresta --graph-symbol-merge=★  --graph-symbol-overpa
 
 # リフレッシュするタイミング
 set refresh-mode = auto
+
+# diff-highlightを有効にする
+set diff-highlight = true
