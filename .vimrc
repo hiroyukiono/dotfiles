@@ -12,10 +12,10 @@ if has('vim_starting')
         " プラグインを記述
         "--------------------------------------
         NeoBundle 'Shougo/neobundle.vim'
-        NeoBundle 'vim-ruby/vim-ruby'
         NeoBundle 'ngmy/vim-rubocop'
         NeoBundle 'rickhowe/diffchar.vim'
         NeoBundle 'scrooloose/syntastic'
+        NeoBundle 'vim-ruby/vim-ruby'
         "--------------------------------------
 
         call neobundle#end()
