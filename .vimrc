@@ -14,6 +14,7 @@ if has('vim_starting')
         NeoBundle 'Shougo/neobundle.vim'
         NeoBundle 'vim-ruby/vim-ruby'
         NeoBundle 'ngmy/vim-rubocop'
+        NeoBundle 'rickhowe/diffchar.vim'
         NeoBundle 'scrooloose/syntastic'
         "--------------------------------------
 
@@ -108,3 +109,16 @@ augroup noah_sort_checker
   autocmd BufEnter */build/system/api/sysapi/app/resources/api_runtime_errors.yml :!noah_sort_checker '%:p'
   autocmd BufWritePost */build/system/api/sysapi/app/resources/api_runtime_errors.yml :!noah_sort_checker '%:p'
 augroup END
+
+"-------------------
+" vimdiff
+"-------------------
+" vimdiffで起動した際自動的に単語単位の差分(diffchar.vim)を有効にする
+if &diff
+  augroup enable_diffchar
+    autocmd!
+    autocmd VimEnter * execute "%SDChar"
+  augroup END
+endif
+" 編集中に差分ハイライトを自動で更新するかどうか。デフォルトは0(更新しない)。
+let g:DiffUpdate = 1
