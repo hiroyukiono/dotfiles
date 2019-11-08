@@ -16,6 +16,8 @@ if has('vim_starting')
         NeoBundle 'rickhowe/diffchar.vim'
         NeoBundle 'scrooloose/syntastic'
         NeoBundle 'vim-ruby/vim-ruby'
+        NeoBundle 'rhysd/vim-clang-format'
+        NeoBundle 'kana/vim-operator-user'
         "--------------------------------------
 
         call neobundle#end()
@@ -54,8 +56,6 @@ set matchpairs& matchpairs+=<:>
 "ステータスライン
 set laststatus=2
 set t_Co=256
-"Tabを空白文字へ置き換える
-set expandtab
 " ビープ音を消す
 set vb t_vb=
 " ビジュアルモード<Control + c>でクリップボードへコピー
@@ -122,3 +122,8 @@ if &diff
 endif
 " 編集中に差分ハイライトを自動で更新するかどうか。デフォルトは0(更新しない)。
 let g:DiffUpdate = 1
+
+"---------------------------
+" C言語の自動フォーマット
+"---------------------------
+autocmd FileType c ClangFormatAutoEnable
