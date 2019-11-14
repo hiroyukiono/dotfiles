@@ -28,7 +28,7 @@ filetype indent on
 
 syntax on
 "絶対行番号
-set number
+" set number
 "相対行番号
 " set relativenumber
 "対応括弧を表示
@@ -127,3 +127,21 @@ let g:DiffUpdate = 1
 " C言語の自動フォーマット
 "---------------------------
 autocmd FileType c ClangFormatAutoEnable
+
+
+"----------------------
+" Vimステータスライン
+"----------------------
+" 常に Status Line を表示する
+set statusline=%F " ファイル名表示
+set statusline+=\ \   " 空白スペース2個
+set statusline+=%m " 変更チェック表示
+set statusline+=%r " 読み込み専用かどうか表示
+set statusline+=%h " ヘルプページなら[HELP]と表示
+set statusline+=%w " プレビューウインドウなら[Prevew]と表示
+set statusline+=[ENC=%{&fileencoding}] " file encoding
+set statusline+=\ \   " 空白スペース2個
+set statusline+=[POS=%l/%L(%02v)] " 現在行数/全行数(ポジション)
+set statusline+=\ \   " 空白スペース2個
+set laststatus=2 " ステータスラインを常に表示(0:表示しない、1:2つ以上ウィンドウがある時だけ表示)
+" set statusline+=%= " これ以降は右寄せ表示
